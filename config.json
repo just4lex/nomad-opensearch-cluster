@@ -1,0 +1,48 @@
+{
+    "datacenter": "oxygen",
+    "fabioTagprefix": "opensearch-logging-prefix-",
+    "opensearch": {
+        "masters": {
+            "nomadClass": "service",
+            "image": "nexus-ecm.phoenixit.ru/opensearch:1.3.4",
+            "count": "3",
+            "volumesMount": {
+                "opensearch_fs": "/usr/share/opensearch/data"
+            },
+            "meta": {
+                "os_node": "master"
+            },
+            "resources": {
+                "cpu": "3990",
+                "memory": "3990"
+            }
+        },
+        "workers": {
+            "image": "nexus-ecm.phoenixit.ru/opensearch:1.3.4",
+            "count": "0",
+            "volumesMount": {
+                "opensearch_fs": "/usr/share/opensearch/data"
+            },
+            "meta": {
+                "os_node": "worker"
+            },
+            "resources": {
+                "cpu": "3990",
+                "memory": "3990"
+            }
+        }
+
+    },
+    "dashboard": {
+        "count": "1",
+        "meta": {
+            "os_node": "master"
+        },
+        "nomadClass": "eosdo-test-ora",
+        "resources": {
+            "cpu": "1990",
+            "memory": "1990"
+        }
+    }
+    
+}
